@@ -41,45 +41,59 @@ class _MyHomePageState extends State<MyHomePage> {
     List categories = ['Recommend', 'Wine Bureau', 'Dinner Party', 'Rodizio'];
     return Scaffold(
       appBar: _bigAppBar(height, width, context),
-      body: Column(
-        children: [
-          SizedBox(
-            height: 35,
-            child: ListView.builder(
-              itemCount: categories.length,
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) => GestureDetector(
-                onTap: () {
-                  setState(() {
-                    selectedIndex = index;
-                  });
-                },
-                child: Container(
-                  padding: const EdgeInsets.only(left: 10, right: 10),
-                  margin: const EdgeInsets.only(left: 10),
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.bottomRight,
+              end: Alignment(0.3, 0.0),
+              colors: [Colors.grey, Colors.white]),
+        ),
+        child: Column(
+          children: [
+            SizedBox(
+              height: 35,
+              child: ListView.builder(
+                itemCount: categories.length,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) => GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      selectedIndex = index;
+                    });
+                  },
                   child: Container(
-                    padding: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.all(Radius.circular(10)),
-                      color: index == selectedIndex
-                          ? Colors.grey[200]
-                          : Colors.white,
-                    ),
-                    child: Text(
-                      categories[index],
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: index == selectedIndex
-                            ? FontWeight.bold
-                            : FontWeight.w400,
+                    padding: const EdgeInsets.only(left: 10, right: 10),
+                    margin: const EdgeInsets.only(left: 10),
+                    child: Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(10)),
+                        color: index == selectedIndex
+                            ? Colors.grey[200]
+                            : Colors.white,
+                      ),
+                      child: Text(
+                        categories[index],
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: index == selectedIndex
+                              ? FontWeight.bold
+                              : FontWeight.w400,
+                        ),
                       ),
                     ),
                   ),
                 ),
               ),
             ),
-          )
-        ],
+            Container(
+              color: Colors.white,
+              height: 90,
+              width: width * .8,
+            ),
+          ],
+        ),
       ),
       //bottomNavigationBar: BottomNavigationBar(
 
